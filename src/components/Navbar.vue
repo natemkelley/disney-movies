@@ -3,7 +3,7 @@
       <div class="navbar-fixed">
           <nav>
             <div class="nav-wrapper" v-bind:class="color">
-                <a href="#" class="brand-logo center">Movie List</a>
+                <a href="#" class="brand-logo center">Disney Movies</a>
                 <ul class="left" v-if="loggedIn">
                     <li>  <a href="#" id="menudiddly" data-target="slide-out" class="show-on-large sidenav-trigger"><i class="material-icons" v-bind:class="textColor">menu</i></a>
                     </li>

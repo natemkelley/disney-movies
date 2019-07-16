@@ -1,7 +1,11 @@
 <template>
     <ul class="pagination right-align row">
-        <li class=""><a href="#!" v-on:click="chevron('dec')"><i class="material-icons">chevron_left</i></a></li>
-        <li class="waves-effect" v-for="(count, index) in pageCount" v-on:click="clickPaginate(count)" v-bind:class="{ active: (activePage == (count)) }"><a href="#!">{{count}}</a></li>
+        <li class="">
+            <a href="#!" v-on:click="chevron('dec')"><i class="material-icons">chevron_left</i></a>
+        </li>
+        <li class="waves-effect" v-for="(count, index) in pageCount" v-on:click="clickPaginate(count)" v-bind:class="{ active: (activePage == (count)) }">
+            <a href="#!">{{count}}</a>
+        </li>
         <li class="waves-effect"><a href="#!" v-on:click="chevron('inc')"><i class="material-icons">chevron_right</i></a></li>
         <li class="right">
             <select class="browser-default" @change="onChange($event)">
@@ -58,12 +62,18 @@
             }
         },
         props: {
-            movies: Array
+            movies: Array,
+            filteredMovies: Array
         },
         computed: {
             pageCount() {
                 var arr = []
-                if (this.movies) {
+                if (this.filteredMovies) {
+                    let l = Math.ceil(this.filteredMovies.length / this.pageNumbers);
+                    for (var i = 1; i <= l; i++) {
+                        arr.push(i)
+                    }
+                } else {
                     let l = Math.ceil(this.movies.length / this.pageNumbers);
                     for (var i = 1; i <= l; i++) {
                         arr.push(i)
@@ -93,8 +103,15 @@
         padding: 5px;
         height: 2.4rem;
     }
+
     .pagination li.active {
-    background-color: #3d9d41;
-}
+        background-color: #3d9d41;
+    }
+
+    @media only screen and (max-width: 494px) {
+        .pagination {
+            text-align: left!important;
+        }
+    }
 
 </style>

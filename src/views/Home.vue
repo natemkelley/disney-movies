@@ -4,8 +4,8 @@
 
           <query-box v-model="searchText" :movies="allMovies" v-on:results="filterstuff" v-if="!loading"></query-box>
           <div class="row" v-if="!loading">
-          <sort-filter class="col s3" v-model="sortFilter"></sort-filter>
-          <pagination-x class="col s9" :movies="allMovies"  v-on:pagresults="paginateResults"></pagination-x>
+          <sort-filter :filteredMovies="movies" class="col s12 m5" v-model="sortFilter"></sort-filter>
+          <pagination-x class="col s12 m7" :movies="allMovies" :filteredMovies='filteredMovies'  v-on:pagresults="paginateResults"></pagination-x>
           </div>
           <div class="row" v-show="!loading">
               <movie-gallery :movies='movies' :sort='sortFilter'></movie-gallery>
@@ -76,7 +76,6 @@
         },
         computed: {
             movies: function() {
-                console.log(this.loading, 'here')
                 if (this.loading) {
                     return this.filteredMovies.slice(this.start, this.end)
                 } else {

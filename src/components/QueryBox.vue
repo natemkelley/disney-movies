@@ -6,7 +6,7 @@
                     <div class="input-field">
                       <input type="search" v-model="searchQuery" v-on:keyup="filterResults()">
                       <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-                      <i class="material-icons" @click="clicked()">close</i>
+                      <i class="material-icons" @click="clicked()" style="margin-top: -5px;">close</i>
                     </div>
                   </form>
                 </div>
@@ -52,6 +52,11 @@
                         this.sticky = false;
                     }
                 }
+            },
+            clicked: function(){
+                this.searchQuery = '';
+                this.$emit('input', this.searchQuery);
+                this.$emit('results', this.movies);
             }
         },
         props: {
