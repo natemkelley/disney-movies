@@ -1,12 +1,12 @@
 <template>
     <div>
-          <div class="col s12 m4 l3" v-for="movie in movies">
+          <div class="col s6 m4 l3" v-for="movie in movies">
               <div class="card medium sticky-action" >
                 <div class="card-image waves-effect waves-block waves-light">
                   <img class="activator" :src="movie.local_poster_path">
                 </div>
                 <div class="card-content">
-                  <span class="card-title">{{movie.title}} ({{movie.release_date | moment}})</span>
+                  <span class="card-title activator">{{movie.title}} ({{movie.release_date | moment}})</span>
                   <p></p>
                 </div>
                 <div class="card-action ">
@@ -67,7 +67,7 @@
                 return Math.round(Number(num)) + "%"
             },
             vote: function(num) {
-                return Math.round(Number(num)*10) + "%"
+                return Math.round(Number(num) * 10) + "%"
             }
         },
     }
@@ -105,6 +105,13 @@
     .rtnspan {
         margin-left: 21px;
         font-size: 17px!important;
+    }
+
+    @media only screen and (max-width: 600px) {
+        .card.medium {
+            height: 475px!important;
+
+        }
     }
 
 </style>

@@ -27,6 +27,7 @@
     import Masonry from 'masonry-layout';
     import imagesLoaded from 'imagesloaded';
     import sort from 'fast-sort';
+    import Sticky from 'vue-sticky-directive'
 
     export default {
         name: 'home',
@@ -68,6 +69,9 @@
             paginateResults: function(pagresults) {
                 this.start = pagresults.start;
                 this.end = pagresults.end;
+            },
+            callback: function() {
+                alert('callback')
             }
         },
         computed: {

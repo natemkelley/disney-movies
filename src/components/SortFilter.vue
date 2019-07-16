@@ -7,7 +7,7 @@
       <option value="popularity">Popularity</option>
        <option value="vote_average">Vote Average</option>
     </select>
-    <label>Materialize Select</label>
+    <label>Sort</label>
   </div>
 </div>
 </template>

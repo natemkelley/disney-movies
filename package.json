@@ -21,7 +21,8 @@
     "register-service-worker": "^1.6.2",
     "sort-json-array": "^0.1.7",
     "vue": "^2.6.10",
-    "vue-router": "^3.0.3"
+    "vue-router": "^3.0.3",
+    "vue-sticky-directive": "0.0.9"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.9.0",
