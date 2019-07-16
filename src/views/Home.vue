@@ -1,7 +1,6 @@
 <template>
   <div class="home">
       <div class="container">
-
           <query-box v-model="searchText" :movies="allMovies" v-on:results="filterstuff" v-if="!loading"></query-box>
           <div class="row" v-if="!loading">
           <sort-filter :filteredMovies="movies" class="col s12 m5" v-model="sortFilter"></sort-filter>

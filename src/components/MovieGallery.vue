@@ -6,14 +6,14 @@
                   <img class="activator" v-lazy="movie.local_poster_path">
                 </div>
                 <div class="card-content">
-                  <span class="card-title activator">{{movie.title}} ({{movie.release_date | moment}})</span>
+                    <a :href="'https://www.themoviedb.org/movie/'+movie.id" target="_blank"><span class="card-title">{{movie.title}} ({{movie.release_date | moment}})</span></a>
                   <p></p>
                 </div>
                 <div class="card-action ">
                     <span v-if="movie.watched" class="light-green-text text-darken-3" @click="openPicker(movie)">{{movie.watched | momentFull}}</span>
                     <span class="rtnspan" v-else>
                         <span v-if="sort != 'vote_average'">
-                            <img class="rtn" src="http://cdn.onlinewebfonts.com/svg/img_335650.png">
+                            <img class="rtn" src="/img/icons/fire.png">
                             {{movie.popularity | rotten}}
                         </span>
                         <span v-else>
@@ -150,6 +150,9 @@
         background: transparent!important;
     }
 
+    .card-content a{
+        color: #000!important
+    }
     @media only screen and (max-width: 600px) {
         .card.medium {
             height: 475px!important;
