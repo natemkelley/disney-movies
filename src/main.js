@@ -9,6 +9,9 @@ import 'material-icons'
 import firebase from 'firebase/app'
 import 'firebase/auth'
 
+import VueLazyload from 'vue-lazyload';
+Vue.use(VueLazyload)
+
 Vue.config.productionTip = false
 
 

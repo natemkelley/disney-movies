@@ -11,6 +11,7 @@
     import NavBar from './components/Navbar.vue';
     import FooterX from './components/Footer.vue';
 
+    
     export default {
         name: 'App',
         components: {

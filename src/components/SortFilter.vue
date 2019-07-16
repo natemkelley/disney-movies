@@ -4,6 +4,7 @@
     <select @change="onChange($event)">
       <option value="release_date">Year</option>
       <option value="title">Title</option>
+      <option value="watched">Watched</option>
       <option value="popularity">Popularity</option>
        <option value="vote_average">Vote Average</option>
     </select>
@@ -11,9 +12,9 @@
   </div>
     <div class="col s6 m4">
         <span>
-            <p v-if="sort === 'release_date'">
+            <h6 v-if="sort === 'release_date'">
                 {{filteredMovies[0].release_date | moment}} - {{filteredMovies[filteredMovies.length -1].release_date | moment}}
-            </p>
+            </h6>
             <span v-if="sort === 'title'">
                 {{filteredMovies[0].title | trim}} - {{filteredMovies[filteredMovies.length -1].title | trim}}
             </span>
@@ -66,6 +67,8 @@
 </script>
 
 <style scoped>
-    .row .col {}
+    h6{
+            font-size: 1.33rem;
+    }
 
 </style>

@@ -79,6 +79,16 @@
                 if (this.loading) {
                     return this.filteredMovies.slice(this.start, this.end)
                 } else {
+                    if (this.sortFilter == 'watched') {
+                        var x = []
+                        this.filteredMovies.forEach(function(obj) {
+                            if (obj.watched.length > 2) {
+                                x.push(obj)
+                            }
+                        })
+                        return sort(x).desc(this.sortFilter);
+                    } 
+                        
                     sort(this.filteredMovies).asc(this.sortFilter);
                     return this.filteredMovies.slice(this.start, this.end)
                 }

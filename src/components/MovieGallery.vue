@@ -3,14 +3,14 @@
           <div class="col s6 m4 l3" v-for="movie in movies">
               <div class="card medium sticky-action" >
                 <div class="card-image waves-effect waves-block waves-light">
-                  <img class="activator" :src="movie.local_poster_path">
+                  <img class="activator" v-lazy="movie.local_poster_path">
                 </div>
                 <div class="card-content">
                   <span class="card-title activator">{{movie.title}} ({{movie.release_date | moment}})</span>
                   <p></p>
                 </div>
                 <div class="card-action ">
-                    <span v-if="movie.watched" class="light-green-text text-darken-3">{{movie.watched | momentFull}}</span>
+                    <span v-if="movie.watched" class="light-green-text text-darken-3" @click="openPicker(movie)">{{movie.watched | momentFull}}</span>
                     <span class="rtnspan" v-else>
                         <span v-if="sort != 'vote_average'">
                             <img class="rtn" src="http://cdn.onlinewebfonts.com/svg/img_335650.png">
@@ -28,10 +28,16 @@
                         <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span>
                       </div>
                       <div class="row">
+                          <img class="responsive-img" :src="movie.backdrop_path">
+                        </div>
+                      <div class="row">
                           <p>{{movie.overview}}</p>
                       </div>
                   </div>
-          </div>
+            </div>
+        </div>
+        <div class="datepicker">
+            <input type="text" class="datepicker">
         </div>
     </div>
 </template>
@@ -40,6 +46,8 @@
 <script>
     import WatchedButton from '@/components/WatchedButton.vue'
     import moment from 'moment'
+    import firebase from 'firebase/app'
+    import 'firebase/database'
 
     export default {
         name: 'MovieGallery',
@@ -68,13 +76,44 @@
             },
             vote: function(num) {
                 return Math.round(Number(num) * 10) + "%"
+            },
+            fbackground: function(img) {
+                return 'https://image.tmdb.org/t/p/w400/' + img;
             }
         },
+        methods: {
+            openPicker: function(that) {
+                var elems = document.querySelectorAll('.datepicker');
+                var options = {
+                    onClose: function() {
+                        var instance = M.Datepicker.getInstance(elems[0]);
+                        var date = instance.toString();
+                        that.watched = date;
+                        firebase.database().ref('/' + that.id).set(that);
+                    }
+                }
+                M.Datepicker.init(elems, options);
+
+                if (that.watched.length > 3) {
+                    M.Datepicker.getInstance(elems[0]).setDate(new Date(that.watched));
+                } else {
+                    M.Datepicker.getInstance(elems[0]).setDate(new Date());
+                }
+                M.Datepicker.getInstance(document.querySelectorAll('.datepicker')[0]).open();
+            }
+        },
+        mounted() {
+
+        }
     }
 
 </script>
 
 <style scoped>
+    img {
+        background: gray;
+    }
+
     .card .card-title {
         font-size: 20px!important;
         font-weight: 300;
@@ -105,6 +144,10 @@
     .rtnspan {
         margin-left: 21px;
         font-size: 17px!important;
+    }
+
+    .card-action img {
+        background: transparent!important;
     }
 
     @media only screen and (max-width: 600px) {
