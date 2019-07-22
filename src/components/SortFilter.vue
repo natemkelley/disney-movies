@@ -5,6 +5,7 @@
       <option value="release_date">Year</option>
       <option value="title">Title</option>
       <option value="watched">Watched</option>
+      <option value="unwatched">Unwatched</option>
       <option value="popularity">Popularity</option>
        <option value="vote_average">Vote Average</option>
     </select>

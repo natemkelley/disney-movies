@@ -9,11 +9,10 @@
         <li class="waves-effect"><a href="#!" v-on:click="chevron('inc')"><i class="material-icons">chevron_right</i></a></li>
         <li class="right">
             <select class="browser-default" @change="onChange($event)">
-            <option value="10">10</option>
-            <option value="20" >20</option>
-            <option value="30" >30</option>
-            <option value="50" selected="selected">50</option>
-            <option value="100">100</option>
+            <option value="50" >50</option>
+            <option value="100" selected="selected">100</option>
+            <option value="150">150</option>
+            <option value="200" >200</option>
           </select>
         </li>
     </ul>
@@ -25,7 +24,7 @@
         data() {
             return {
                 searchQuery: '',
-                pageNumbers: 50,
+                pageNumbers: 100,
                 activePage: 1,
                 results: []
             }
