@@ -39,9 +39,12 @@
                 }
                 this.filteredMovies = this.allMovies.slice();
                 this.loading = true;
+                M.toast({
+                    html: 'Welcome Back ' + firebase.auth().currentUser.displayName
+                })
             })
 
-            firebase.database().ref(firebase.auth().currentUser.uid).on('value', (snapshot)=> {
+            firebase.database().ref(firebase.auth().currentUser.uid).on('value', (snapshot) => {
                 var arr = []
                 for (var key in snapshot.val().watched) {
                     arr.push(snapshot.val().watched[key]);
