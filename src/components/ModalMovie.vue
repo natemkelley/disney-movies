@@ -1,26 +1,26 @@
 <template>
-      <div id="modal1" class="modal large">
-          <div class="modal-header">
-               <h4 class="white-text">{{movieDetails.title}}</h4>
-               <img :src="baseURL+movieDetails.backdrop_path" class="responsive-img">
+    <div id="modal1" class="modal large">
+        <div class="modal-header">
+            <h4 class="white-text">{{movieDetails.title}}</h4>
+            <img :src="baseURL+movieDetails.backdrop_path" class="responsive-img">
         </div>
         <div class="modal-subheader">
             <h6>{{movieDetails.tagline}}</h6>
             <p>{{movieDetails.overview}}</p>
         </div>
-          
+
         <div class="modal-content row">
             <ul class="collection">
-              <li class="collection-item">Budget<span class="right">{{movieDetails.budget | currency}}</span></li>
-              <li class="collection-item">Revenue<span class="right">{{movieDetails.revenue | currency}}</span></li>
-              <li class="collection-item">Run Time<span class="right">{{movieDetails.runtime}} Minutes</span></li>
-              <li class="collection-item" v-if="movieDetails.homepage">Homepage<span class="right"><a :href="movieDetails.homepage" >Website</a></span></li>
-              <li class="collection-item">Release Date<span class="right">{{movieDetails.release_date}}</span></li>
-              <li class="collection-item" v-if="movieDetails.production_companies">Production Companies<span class="right">{{movieDetails.production_companies[0].name}}</span></li>
+                <li class="collection-item">Budget<span class="right">{{movieDetails.budget | currency}}</span></li>
+                <li class="collection-item">Revenue<span class="right">{{movieDetails.revenue | currency}}</span></li>
+                <li class="collection-item">Run Time<span class="right">{{movieDetails.runtime}} Minutes</span></li>
+                <li class="collection-item" v-if="movieDetails.homepage">Homepage<span class="right"><a :href="movieDetails.homepage">Website</a></span></li>
+                <li class="collection-item">Release Date<span class="right">{{movieDetails.release_date}}</span></li>
+                <li class="collection-item" v-if="movieDetails.production_companies">Studio<span class="right">{{movieDetails.production_companies[0].name}}</span></li>
 
             </ul>
         </div>
-      </div>
+    </div>
 </template>
 
 <script>
@@ -34,34 +34,25 @@
                 baseURL: 'https://image.tmdb.org/t/p/w500'
             }
         },
-        methods: {
-            clicked: function() {}
-        },
         props: {
             id: {},
-        },
-        computed: {
-            pageCount() {
-                var arr = []
-                return arr
-            },
         },
         mounted() {
             var options = {
                 startingTop: '5%',
                 endingTop: '5%'
             }
-            M.Modal.init(document.querySelectorAll('.modal'), options);
+            M.Modal.init(document.querySelectorAll('#modal1'), options);
+            console.log('modal mounted')
         },
         watch: {
             id: function(val, valold) {
-                console.log(val, valold)
+
                 mdb.movieInfo({
                     id: val.id
                 }, (err, res) => {
-                    console.log(res);
                     this.movieDetails = res;
-                    M.Modal.getInstance(document.querySelectorAll('.modal')[0]).open();
+                    M.Modal.getInstance(document.querySelectorAll('#modal1')[0]).open();
                 });
             }
         },
@@ -83,7 +74,7 @@
     .large {
         width: 75% !important;
         height: 95% !important;
-        max-height: 80%!important;
+        max-height: 80% !important;
     }
 
     .responsive-img {
@@ -120,7 +111,7 @@
 
     h4 {
         font-size: 3.16em;
-        margin-left: 5%!important;
+        margin-left: 5% !important;
         z-index: 1;
         position: absolute;
         bottom: 0;

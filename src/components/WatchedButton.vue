@@ -26,7 +26,8 @@
                         let date = String(new Date())
                         let watchedID = {
                             date: date,
-                            movieID: datt.id
+                            movieID: datt.id,
+                            title: datt.title
                         }
                         firebase.database().ref('/' + uid + '/uid').set(uid);
                         firebase.database().ref('/' + uid + '/watched').push(watchedID)

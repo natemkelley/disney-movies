@@ -1,9 +1,9 @@
 <template>
     <div class="login-page container row">
         <div class="col m8 offset-m2">
-            <div class="card large">
+            <div class="card">
                 <div class="card-image">
-                  <img src="https://i.ytimg.com/vi/uG6li2J6nXk/maxresdefault.jpg">
+                  <img src="/img/maxresdefault.jpg">
                   <span class="card-title">Sign In</span>
                 </div>
                 <div class="card-content">

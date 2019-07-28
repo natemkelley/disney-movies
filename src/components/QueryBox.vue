@@ -41,7 +41,7 @@
                 };
                 var fuse = new Fuse(this.movies, options)
                 var results = fuse.search(this.searchQuery)
-                console.log(results)
+                //console.log(results)
                 this.$emit('results', results);
             },
             handleScroll: function() {

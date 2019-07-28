@@ -3,11 +3,13 @@
         <div class="container">
             <query-box v-model="searchText" :movies="allMovies" v-on:results="filterstuff" v-if="!loading"></query-box>
             <div class="row" v-if="!loading">
-                <sort-filter :filteredMovies="movies" class="col s12 m5" v-model="sortFilter"></sort-filter>
-                <pagination-x class="col s12 m7" :movies="allMovies" :filteredMovies='filteredMovies' v-on:pagresults="paginateResults" ref="paginate1"></pagination-x>
+                <sort-filter :filteredMovies="movies" class="col s12 m8 l7" v-model="sortFilter"></sort-filter>
             </div>
             <div class="row" v-show="!loading">
                 <movie-gallery :movies='movies' :sort='sortFilter' :watchedStatus="watchedStatus" v-on:idupdate="idupdate"></movie-gallery>
+            </div>
+            <div class="row" v-if="!loading">
+                <pagination-x class="col s12 m7 offset-m5" :movies="allMovies" :filteredMovies='filteredMovies' v-on:pagresults="paginateResults" ref="paginate1"></pagination-x>
             </div>
             <disc-loader v-if="loading"></disc-loader>
             <modal-movie :id='id'></modal-movie>
@@ -140,7 +142,7 @@
         updated() {
             setTimeout(() => {
                 this.loading = false;
-            }, 600);
+            }, 100);
         },
         mounted() {
             window.addEventListener('scroll', this.handleScroll);

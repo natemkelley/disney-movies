@@ -25,7 +25,6 @@
             </li>
             
             <li><router-link to='home' class="waves-effect"><i class="material-icons">home</i>Home</router-link></li>
-            <li><router-link to='home' class="waves-effect">Watched Movies</router-link></li>
 
             <li><a v-on:click="toggleLog" class="logout">Logout</a></li>
         </ul>

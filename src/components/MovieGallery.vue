@@ -82,7 +82,8 @@
                         let uid = firebase.auth().currentUser.uid;
                         var newDateObj = {
                             date: date,
-                            movieID: movieObj.id
+                            movieID: movieObj.id,
+                            title: movieObj.title
                         }
                         firebase.database().ref('/' + uid + '/watched').once('value').then(snapshot => {
                             for (var key in snapshot.val()) {

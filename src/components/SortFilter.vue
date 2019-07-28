@@ -11,15 +11,15 @@
     </select>
     <label>Sort</label>
   </div>
-    <div class="col s6 m4">
-        <span>
+    <div class="col s6 m4 yearly">
+        <div>
             <h6 v-if="sort === 'release_date'">
                 {{filteredMovies[0].release_date | moment}} - {{filteredMovies[filteredMovies.length -1].release_date | moment}}
             </h6>
             <span v-if="sort === 'title'">
                 {{filteredMovies[0].title | trim}} - {{filteredMovies[filteredMovies.length -1].title | trim}}
             </span>
-        </span>
+        </div>
     </div>
 </div>
 </template>
@@ -70,6 +70,10 @@
 <style scoped>
     h6{
             font-size: 1.33rem;
+    }
+    
+    .yearly{
+            margin-top: 4%;
     }
 
 </style>
