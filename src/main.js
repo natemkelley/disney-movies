@@ -17,7 +17,7 @@ Vue.config.productionTip = false
 
 let app = '';
 const firebaseConfig = {
-    apiKey: "AIzaSyB_Wnxg2FoUchfSfwpchLKLHA1heikmu40",
+    apiKey: "",
     authDomain: "disney-movie-list.firebaseapp.com",
     databaseURL: "https://disney-movie-list.firebaseio.com",
     projectId: "disney-movie-list",
